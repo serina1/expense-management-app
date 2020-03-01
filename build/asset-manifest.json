@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/expense-management-app/static/css/main.d1b05096.chunk.css",
+    "main.js": "/expense-management-app/static/js/main.8b3b24ff.chunk.js",
+    "main.js.map": "/expense-management-app/static/js/main.8b3b24ff.chunk.js.map",
+    "runtime-main.js": "/expense-management-app/static/js/runtime-main.833b8afd.js",
+    "runtime-main.js.map": "/expense-management-app/static/js/runtime-main.833b8afd.js.map",
+    "static/js/2.24253b02.chunk.js": "/expense-management-app/static/js/2.24253b02.chunk.js",
+    "static/js/2.24253b02.chunk.js.map": "/expense-management-app/static/js/2.24253b02.chunk.js.map",
+    "index.html": "/expense-management-app/index.html",
+    "precache-manifest.5e46d167eb45a7fb5c551b6e75fe5327.js": "/expense-management-app/precache-manifest.5e46d167eb45a7fb5c551b6e75fe5327.js",
+    "service-worker.js": "/expense-management-app/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/expense-management-app/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.24253b02.chunk.js.LICENSE.txt": "/expense-management-app/static/js/2.24253b02.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/expense-management-app/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.833b8afd.js",
+    "static/js/2.24253b02.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.8b3b24ff.chunk.js"
+  ]
+}
