@@ -35,7 +35,7 @@ function Jumbotron() {
       <Jumbo fluid className="jumbo">
         <div className="overlay"></div>
         <Container>
-            <h1>Welcome</h1>
+            <h1>Hello There</h1>
             <p>
               A free expense management application for smaller businesses and
               start ups.
