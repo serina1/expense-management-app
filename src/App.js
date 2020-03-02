@@ -18,8 +18,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={LandingContainer} />
-          <Route exact path="/signup" component={LandingContainer} />
-          <Route exact path="/login" component={LandingContainer} />
+          <Route exact path="/signup" component={SignUpContainer} />
+          <Route exact path="/login" component={SignUpContainer} />
           <Route component={AccountContainer} />
         </Switch>
       </Router>
@@ -32,6 +32,18 @@ function LandingContainer() {
     <React.Fragment>
       <NavbarLanding />
       <Jumbotron />
+      <Layout>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+      </Layout>
+    </React.Fragment>
+  );
+}
+
+function SignUpContainer() {
+  return (
+    <React.Fragment>
       <Layout>
         <Route exact path="/" component={Landing} />
         <Route exact path="/signup" component={Signup} />
