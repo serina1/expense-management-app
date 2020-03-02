@@ -16,6 +16,8 @@ const Styles = styled.div`
 
     &:hover {
       color: white;
+      text-decoration: none;
+      transition: all 1s;
     }
   }
 `;
@@ -34,12 +36,12 @@ export const NavbarLanding = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup">Sign up</Link>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
-              <Link to="/login">Log In</Link>
+              <Link to="/login">Log in</Link>
             </Nav.Link>
           </Nav.Item>
         </Nav>
