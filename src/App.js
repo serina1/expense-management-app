@@ -7,10 +7,10 @@ import Account from "./components/pages/Account";
 import AllClaims from "./components/pages/AllClaims";
 import CreateClaim from "./components/pages/CreateClaim";
 import Charts from "./components/pages/Charts";
-import NavbarLanding from "./components/NavbarLanding";
-import NavbarAccount from "./components/NavbarAccount";
+import NavbarLanding from "./components/landing/NavbarLanding";
+import NavbarAccount from "./components/account/NavbarAccount";
 import Layout from "./components/Layout";
-import Jumbotron from "./components/Jumbotron";
+import Jumbotron from "./components/landing/Jumbotron";
 
 function App() {
   return (
@@ -44,6 +44,7 @@ function LandingContainer() {
 function SignUpContainer() {
   return (
     <React.Fragment>
+      <NavbarLanding />
       <Layout>
         <Route exact path="/" component={Landing} />
         <Route exact path="/signup" component={Signup} />

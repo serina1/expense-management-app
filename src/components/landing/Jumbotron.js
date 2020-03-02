@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Jumbotron as Jumbo, Container } from "react-bootstrap";
 import styled from "styled-components";
-import backgroundImage from "../assets/img/background.jpg";
+import backgroundImage from "../../assets/img/background.jpg";
+import SignupButton from "./SignupButton";
 
 const Styles = styled.div`
   .jumbo {
@@ -35,17 +36,16 @@ function Jumbotron() {
       <Jumbo fluid className="jumbo">
         <div className="overlay"></div>
         <Container>
-            <h1>Hello There</h1>
-            <p>
-              A free expense management application for smaller businesses and
-              start ups.
-            </p>
-            <p><Link to="/signup">
-              <button type="button" class="btn btn-primary text-center">
-                Sign Up
-              </button>
+          <h1>Hello There</h1>
+          <p>
+            A free expense management application for smaller businesses and
+            start ups.
+          </p>
+          <p>
+            <Link to="/signup">
+              <SignupButton>Sign Up</SignupButton>
             </Link>
-            </p>
+          </p>
         </Container>
       </Jumbo>
     </Styles>
