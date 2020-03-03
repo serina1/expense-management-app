@@ -3,17 +3,48 @@ import React from "react";
 function Signup() {
   return (
     <div>
-      <h1>Sign up</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
+      <p />
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <h2>Sign Up Form</h2>
+            <form class="signup">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email-input"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password-input"
+                  placeholder="Password"
+                />
+              </div>
+              {/* <div id="alert" class="alert alert-danger" role="alert">
+                <span
+                  class="glyphicon glyphicon-exclamation-sign"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Error:</span> <span class="msg"></span>
+              </div> */}
+              <button type="submit" class="btn btn-default">
+                Sign Up
+              </button>
+            </form>
+            <br />
+            <p>
+              Or log in <a href="/login">here</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
