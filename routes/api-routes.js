@@ -2,8 +2,8 @@ const db = require("../model/expenseModel")
 const router = require("express").Router();
 
 
-router.get("/allclaims", (req, res) => {
-  db.Expense.find({
+router.get("/api/allclaims", (req, res) => {
+  db.find({
     title:{ $regex: new RegExp(req.query.q, 'i')}
   })
   .then(expenses => res.json(expenses))
