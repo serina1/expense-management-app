@@ -1,19 +1,108 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Input, FormBtn } from "../form";
+import API from "../../utils/API";
 
 function Signup() {
+  // Setting our component's initial state
+  const [formObject, setFormObject] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  });
+
+  // Handles updating component state when the user types into the input field
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+  }
+
+  // When the form is submitted, use the API.saveUser method to save the user data
+  // Then redirect the user to the account page
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (
+      formObject.firstName &&
+      formObject.lastName &&
+      formObject.email &&
+      formObject.password
+    ) {
+      API.saveUser({
+        firstName: formObject.firstName,
+        lastName: formObject.lastName,
+        email: formObject.email,
+        password: formObject.password
+      })
+        .then(() =>
+          setFormObject({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: ""
+          })
+        )
+        .then(() => {
+          window.location.replace("/account");
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
   return (
     <div>
-      <h1>Sign up</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
-      </p>
+      <p />
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <h2>Sign Up Form</h2>
+            <p />
+            <form>
+              <Input
+                onChange={handleInputChange}
+                name="firstName"
+                placeholder="First name (required)"
+                value={formObject.firstName}
+              />
+              <Input
+                onChange={handleInputChange}
+                name="lastName"
+                placeholder="Last name (required)"
+                value={formObject.lastName}
+              />
+              <Input
+                onChange={handleInputChange}
+                name="email"
+                placeholder="Email (required)"
+                value={formObject.email}
+              />
+              <Input
+                onChange={handleInputChange}
+                name="password"
+                placeholder="Password (required)"
+                value={formObject.password}
+              />
+              <FormBtn
+                disabled={
+                  !(
+                    formObject.firstName ||
+                    formObject.lastName ||
+                    formObject.email ||
+                    formObject.password
+                  )
+                }
+                onClick={handleFormSubmit}
+              >
+                Submit
+              </FormBtn>
+            </form>
+            <br />
+            <p>
+              Or log in <Link to="/login">here</Link>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
