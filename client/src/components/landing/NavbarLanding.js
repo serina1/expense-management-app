@@ -7,6 +7,7 @@ const Styles = styled.div`
   .navbar {
     background-color: #222;
     height: 90px;
+    border-bottom: 1px solid #bbb;
   }
 
   a,
