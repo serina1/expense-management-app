@@ -5,10 +5,19 @@ const path = require("path")
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const apiRoutes = require("./routes/api-routes");
+const apiRoutes = require("./routes");
+
+// app.get("/routes", (req, res) => {
+//   const data = {
+//   title:"hello",
+//    name:"test",
+//    category:"test"
+//   }
+// })
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
@@ -24,9 +33,9 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/" + databaseUrl,
   { useNewUrlParser: true }
 );
-app.use("/api", apiRoutes)
+app.use( apiRoutes)
 
-app.get("*", function(req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
