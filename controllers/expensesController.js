@@ -1,5 +1,5 @@
 //defining methods for expense controller
-const db = require ("../model/expenseModel");
+const db = require ("../models/expenseModel");
 
 
 module.exports = {

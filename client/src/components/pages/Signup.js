@@ -6,8 +6,8 @@ import API from "../../utils/API";
 function Signup() {
   // Setting our component's initial state
   const [formObject, setFormObject] = useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: ""
   });
@@ -23,21 +23,21 @@ function Signup() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (
-      formObject.firstName &&
-      formObject.lastName &&
+      formObject.firstname &&
+      formObject.lastname &&
       formObject.email &&
       formObject.password
     ) {
       API.saveUser({
-        firstName: formObject.firstName,
-        lastName: formObject.lastName,
+        firstname: formObject.firstname,
+        lastname: formObject.lastname,
         email: formObject.email,
         password: formObject.password
       })
         .then(() =>
           setFormObject({
-            firstName: "",
-            lastName: "",
+            firstname: "",
+            lastname: "",
             email: "",
             password: ""
           })
@@ -60,13 +60,13 @@ function Signup() {
             <form>
               <Input
                 onChange={handleInputChange}
-                name="firstName"
+                name="firstname"
                 placeholder="First name (required)"
                 value={formObject.firstName}
               />
               <Input
                 onChange={handleInputChange}
-                name="lastName"
+                name="lastname"
                 placeholder="Last name (required)"
                 value={formObject.lastName}
               />
@@ -85,8 +85,8 @@ function Signup() {
               <FormBtn
                 disabled={
                   !(
-                    formObject.firstName ||
-                    formObject.lastName ||
+                    formObject.firstname ||
+                    formObject.lastname ||
                     formObject.email ||
                     formObject.password
                   )
