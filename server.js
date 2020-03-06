@@ -14,14 +14,6 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-// app.get("/routes", (req, res) => {
-//   const data = {
-//     title: "hello",
-//     name: "test",
-//     category: "test"
-//   };
-// });
-
 app.use("/users", userRouter);
 
 // Production is for heroku deployment
