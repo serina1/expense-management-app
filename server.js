@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const databaseUrl = "expensemanagementapp";
 const userRouter = require("./routes/api/user");
-
+const expenseRouter = require("./routes/api/expenses")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,6 +15,8 @@ mongoose.connect(
 );
 
 app.use("/users", userRouter);
+app.use("/expenses", expenseRouter);
+
 
 // Production is for heroku deployment
 if (process.env.NODE_ENV === "production") {

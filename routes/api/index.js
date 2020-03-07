@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const expenseRoutes = require("./expenses")
+// const router = require("express").Router();
+// const expenseRoutes = require("./expenses")
 
-// API Routes
+// // API Routes
 
-router.use("/expenses", expenseRoutes);
-// If no API routes are hit, send the React app
+// router.use("/expenses", expenseRoutes);
+// // If no API routes are hit, send the React app
 
-module.exports = router;
+// module.exports = router;
