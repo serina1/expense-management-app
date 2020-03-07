@@ -5,13 +5,24 @@ const ExpenseSchema = new Schema({
   title: {
     type: String
   },
-  name: {
-    type: String
+  date: {
+    type: Date, 
+    required: true 
   },
   category: {
     type: String
+  },
+  clienttocharge: {
+    type: String
+  },
+  amount: {
+    type: Number
+  },
+  notes: {
+    type: String
   }
 });
+
 
 const Expense = mongoose.model("Expense", ExpenseSchema);
 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const userController = require("../../controllers/expensesController");
+//const userController = require("../../controllers/expensesController");
 let User = require("../../models/userModel");
 
 // router.route("/").get(userController.findAll);
