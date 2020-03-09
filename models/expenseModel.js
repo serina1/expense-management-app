@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const ExpenseSchema = new mongoose.Schema({
+const ExpenseSchema = new Schema({
   title: {
     type: String
   },
@@ -23,4 +24,6 @@ const ExpenseSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("Expense", ExpenseSchema);
+const Expense = mongoose.model("Expense", ExpenseSchema);
+
+module.exports = Expense;

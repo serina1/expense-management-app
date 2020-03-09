@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   firstname: {
     type: String
   },
@@ -17,12 +18,6 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-UserSchema.methods.generateHash = function(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8). null);
-}
+const User = mongoose.model("User", UserSchema);
 
-UserSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-}
-
-module.exports = mongoose.model("User", UserSchema);
+module.exports = User;
