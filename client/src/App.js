@@ -34,8 +34,6 @@ function LandingContainer() {
       <Jumbotron />
       <Layout>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Login} />
       </Layout>
     </React.Fragment>
   );
@@ -46,7 +44,6 @@ function SignUpContainer() {
     <React.Fragment>
       <NavbarLanding />
       <Layout>
-        <Route exact path="/" component={Landing} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
       </Layout>

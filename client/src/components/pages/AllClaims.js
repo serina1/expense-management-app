@@ -3,7 +3,7 @@ import React from "react";
 function AllClaims() {
   return (
     <div>
-      <h1>All Claims</h1>
+      <h1>Overview</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
         varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
