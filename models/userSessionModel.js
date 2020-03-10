@@ -11,4 +11,4 @@ const UserSessionSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("User", UserSessionSchema);
+module.exports = mongoose.model("UserSession", UserSessionSchema);
