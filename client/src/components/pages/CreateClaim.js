@@ -11,7 +11,8 @@ function CreateClaim() {
     category: "",
     clienttocharge: "",
     amount: "",
-    notes: ""
+    notes: "",
+    
   });
 
   // Handles updating component state when the user types into the input field
@@ -24,8 +25,8 @@ function CreateClaim() {
   // Then redirect the user to the account page
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.email && formObject.password) {
-      API.saveUser({
+    
+      API.createExpense({
         title: formObject.title,
         date: formObject.date,
         category: formObject.category,
@@ -35,15 +36,19 @@ function CreateClaim() {
       })
         .then(() =>
           setFormObject({
-            email: "",
-            password: ""
+            title: "",
+            date: "",
+            category: "",
+            clienttocharge: "",
+            amount: "",
+            notes: ""
           })
         )
         .then(() => {
-          window.location.replace("/account");
+          window.location.replace("/allclaims");
         })
         .catch(err => console.log(err));
-    }
+    
   }
 
   return (
@@ -92,8 +97,8 @@ function CreateClaim() {
                 value={formObject.notes}
               />
               <FormBtn
-                disabled={!(formObject.title || formObject.date)}
-                onClick={handleFormSubmit}
+                // disabled={!(formObject.title || formObject.date)}
+                onClick={e => handleFormSubmit(e)}
               >
                 Submit
               </FormBtn>
@@ -107,3 +112,5 @@ function CreateClaim() {
 }
 
 export default CreateClaim;
+
+

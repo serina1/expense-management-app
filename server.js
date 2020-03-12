@@ -15,8 +15,8 @@ mongoose.connect(
 );
 
 app.use("/users", userRouter);
-app.use("/expenses", expenseRouter);
 
+app.use("/expenses", expenseRouter);
 
 // Production is for heroku deployment
 if (process.env.NODE_ENV === "production") {
