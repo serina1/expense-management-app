@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 
