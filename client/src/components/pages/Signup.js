@@ -91,7 +91,7 @@ function Signup() {
             </form>
             <br />
             <p>
-              Or log in <Link to="/login">here</Link>
+              Already have an account? Log in <Link to="/login">here</Link>.
             </p>
           </div>
         </div>

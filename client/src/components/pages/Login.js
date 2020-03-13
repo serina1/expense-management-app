@@ -68,7 +68,7 @@ function Login() {
             </form>
             <br />
             <p>
-            Or sign up <Link to="/signup">here</Link>
+              Haven't signed up with us yet? Click <Link to="/signup">here</Link>.
             </p>
           </div>
         </div>

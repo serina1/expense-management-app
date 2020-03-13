@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import PageCard from "../account/PageCard"
 
-function Account() {
+function Account(props) {
+console.log(props)
+
+const [name, setName] = useState();
+
   return (
     <div>
-      <h1>Account</h1>
+      <h1>Hello, {name}</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-        varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-        Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-        imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum
-        ligula in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare
-        elit. Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-        consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et
-        malesuada fames ac ante ipsum primis in faucibus.
+        Welcome to Expense Management App! Please select one of the options below...
       </p>
+      <PageCard />
     </div>
   );
 }
