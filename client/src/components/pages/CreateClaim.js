@@ -96,7 +96,6 @@ function CreateClaim() {
                 value={formObject.notes}
               />
               <FormBtn
-                // disabled={!(formObject.title || formObject.date)}
                 onClick={e => handleFormSubmit(e)}
               >
                 Submit

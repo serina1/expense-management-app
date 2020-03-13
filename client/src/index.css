@@ -1,6 +1,12 @@
 body, html {
+    font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0;
     color: white;
     background-color: #222;
+}
+
+tr {
+    background: white;
+    color: black;
 }
