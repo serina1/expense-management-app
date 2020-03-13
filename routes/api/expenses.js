@@ -11,6 +11,7 @@ router.route("/").get((req, res) => {
   });
   
   router.route("/add").post((req, res) => {
+    console.log(req.body)
     const title = req.body.title;
     const date = Date.parse(req.body.date);
     const category = req.body.category;

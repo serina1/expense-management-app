@@ -28,7 +28,7 @@ function Signup() {
       formObject.email &&
       formObject.password
     ) {
-      API.saveUser({
+      API.signinUser({
         firstname: formObject.firstname,
         lastname: formObject.lastname,
         email: formObject.email,
@@ -108,3 +108,4 @@ function Signup() {
 }
 
 export default Signup;
+
