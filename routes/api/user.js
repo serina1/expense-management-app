@@ -1,9 +1,9 @@
 const router = require("express").Router();
-//const userController = require("../../controllers/expensesController");
+const config = require("config");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 let User = require("../../models/userModel");
-let UserSession = require("../../models/userSessionModel");
-
-// router.route("/").get(userController.findAll);
+const auth = require("../../middleware/auth");
 
 router.route("/").get((req, res) => {
   User.find()
@@ -65,25 +65,31 @@ router.route("/signup").post((req, res) => {
       newUser.lastname = lastname;
       newUser.email = email;
       newUser.password = newUser.generateHash(password);
-      newUser.save((err, user) => {
-        if (err) {
-          return res.send({
-            success: false,
-            message: "Error: Server error"
-          });
-        }
-        return res.send({
-          success: true,
-          message: "User added!"
-        });
+      newUser.save().then(user => {
+        jwt.sign(
+          { id: user.id },
+          config.get("jwtSecret"),
+          { expiresIn: 3600 },
+          (err, token) => {
+            if (err) throw err;
+            res.json({
+              token,
+              user: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+              }
+            });
+          }
+        );
       });
     }
   );
 });
 
-router.route("/signin").post((req, res) => {
+router.route("/login", auth).post((req, res) => {
   const { body } = req;
-  let { firstname, lastname, email, password } = body;
+  let { email, password } = body;
 
   if (!email) {
     return res.send({
@@ -100,35 +106,31 @@ router.route("/signin").post((req, res) => {
 
   email = email.toLowerCase();
 
-  User.find(
-    {
-      email: email
-    },
-    (err, users) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Error: Server error"
-        });
-      }
-      if (users.length != 1) {
-        return res.send({
-          success: false,
-          message: "Error: Invalid"
-        });
-      }
+  User.findOne({ email }).then(user => {
+    if (!user) return res.status(400).json({ msg: "User does not exist" });
 
-      const user = users[0];
-      if (!user.validPassword(password)) {
-        return res.send({
-          success: false,
-          message: "Error: Invalid"
-        });
-      }
+    // validate password
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
-      new userSession
-    }
-  );
+      jwt.sign(
+        { id: user.id },
+        config.get("jwtSecret"),
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({
+            token,
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email
+            }
+          });
+        }
+      );
+    });
+  });
 });
 
 module.exports = router;
