@@ -9,6 +9,7 @@ import CreateClaim from "./components/pages/CreateClaim";
 import Charts from "./components/pages/Charts";
 import NavbarLanding from "./components/landing/NavbarLanding";
 import NavbarAccount from "./components/account/NavbarAccount";
+import Sidebar from "./components/account/Sidebar";
 import Layout from "./components/Layout";
 import Jumbotron from "./components/landing/Jumbotron";
 
@@ -55,6 +56,7 @@ function AccountContainer() {
   return (
     <React.Fragment>
       <NavbarAccount />
+      <Sidebar />
       <Layout>
         <Route exact path="/account" component={Account} />
         <Route exact path="/allclaims" component={AllClaims} />

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -31,19 +30,13 @@ export const NavbarLanding = () => (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Home</Link>
-            </Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/signup">Sign up</Link>
-            </Nav.Link>
+            <Nav.Link href="/signup">Sign up</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/login">Log in</Link>
-            </Nav.Link>
+            <Nav.Link href="/login">Log in</Nav.Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
