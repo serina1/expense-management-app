@@ -7,8 +7,11 @@ export default {
   createExpense: function(userData) {
     return axios.post("/expenses/add", userData);
   },
-  signinUser: function(userData) {
-    return axios.post("/users/signin", userData);
+  signupUser: function(userData) {
+    return axios.post("/users/signup", userData);
+  },
+  loginuser: function(userData) {
+    return axios.post("/users/login", userData);
   }
 };
 

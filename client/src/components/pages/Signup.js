@@ -22,13 +22,7 @@ function Signup() {
   // Then redirect the user to the account page
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (
-      formObject.firstname &&
-      formObject.lastname &&
-      formObject.email &&
-      formObject.password
-    ) {
-      API.signinUser({
+      API.signupUser({
         firstname: formObject.firstname,
         lastname: formObject.lastname,
         email: formObject.email,
@@ -46,7 +40,6 @@ function Signup() {
           window.location.replace("/account");
         })
         .catch(err => console.log(err));
-    }
   }
 
   return (
@@ -85,9 +78,9 @@ function Signup() {
               <FormBtn
                 disabled={
                   !(
-                    formObject.firstname ||
-                    formObject.lastname ||
-                    formObject.email ||
+                    formObject.firstname &&
+                    formObject.lastname &&
+                    formObject.email &&
                     formObject.password
                   )
                 }

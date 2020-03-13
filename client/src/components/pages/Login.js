@@ -6,8 +6,6 @@ import API from "../../utils/API";
 function Login() {
   // Setting our component's initial state
   const [formObject, setFormObject] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: ""
   });
@@ -23,7 +21,7 @@ function Login() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.email && formObject.password) {
-      API.saveUser({
+      API.loginuser({
         email: formObject.email,
         password: formObject.password
       })
@@ -62,7 +60,7 @@ function Login() {
                 value={formObject.password}
               />
               <FormBtn
-                disabled={!(formObject.email || formObject.password)}
+                disabled={!(formObject.email && formObject.password)}
                 onClick={handleFormSubmit}
               >
                 Submit
