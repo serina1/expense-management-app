@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  BrowserRouter as Router,
-  Route,
   Link,
   withRouter
 } from "react-router-dom";
@@ -12,10 +10,10 @@ const StyledSideNav = styled.div`
   height: 100%;
   width: 200px; /* Set the width of the sidebar */
   z-index: 0; /* Stay on top of everything */
-  top: 5em; /* Stay at the top */
-  background-color: #222;
+  top: 4em; /* Stay at the top */
+  background-color: #2b2b2b;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 10px;
+  padding-top: 30px;
 `;
 
 class SideNav extends React.Component {
