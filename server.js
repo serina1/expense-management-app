@@ -16,9 +16,9 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-app.use("/users", userRouter);
-app.use("/auth", authRouter);
-app.use("/expenses", expenseRouter);
+app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/expenses", expenseRouter);
 
 // Production is for heroku deployment
 if (process.env.NODE_ENV === "production") {
