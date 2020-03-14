@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function CreateClaim() {
   // Setting our component's initial state
@@ -13,6 +15,11 @@ function CreateClaim() {
     notes: ""
   });
 
+  function handleDateChange(date) {
+    //console.log(event)
+    setFormObject({ ...formObject, date });
+  }
+
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -23,30 +30,29 @@ function CreateClaim() {
   // Then redirect the user to the account page
   function handleFormSubmit(event) {
     event.preventDefault();
-    
-      API.createExpense({
-        title: formObject.title,
-        date: formObject.date,
-        category: formObject.category,
-        clienttocharge: formObject.clienttocharge,
-        amount: formObject.amount,
-        notes: formObject.notes
-      })
-        .then(() =>
-          setFormObject({
-            title: "",
-            date: "",
-            category: "",
-            clienttocharge: "",
-            amount: "",
-            notes: ""
-          })
-        )
-        .then(() => {
-          window.location.replace("/allclaims");
+
+    API.createExpense({
+      title: formObject.title,
+      date: formObject.date,
+      category: formObject.category,
+      clienttocharge: formObject.clienttocharge,
+      amount: formObject.amount,
+      notes: formObject.notes
+    })
+      .then(() =>
+        setFormObject({
+          title: "",
+          date: "",
+          category: "",
+          clienttocharge: "",
+          amount: "",
+          notes: ""
         })
-        .catch(err => console.log(err));
-    
+      )
+      .then(() => {
+        window.location.replace("/allclaims");
+      })
+      .catch(err => console.log(err));
   }
 
   return (
@@ -64,11 +70,16 @@ function CreateClaim() {
                 placeholder="Title (required)"
                 value={formObject.title}
               />
-              <Input
+              {/* <Input
                 onChange={handleInputChange}
                 name="date"
                 placeholder="Date (required)"
                 value={formObject.date}
+              /> */}
+              <DatePicker
+                onChange={handleDateChange}
+                selected={formObject.date}
+                placeholder="Date (required)"
               />
               <Input
                 onChange={handleInputChange}
@@ -94,11 +105,7 @@ function CreateClaim() {
                 placeholder="Notes"
                 value={formObject.notes}
               />
-              <FormBtn
-                onClick={e => handleFormSubmit(e)}
-              >
-                Submit
-              </FormBtn>
+              <FormBtn onClick={e => handleFormSubmit(e)}>Submit</FormBtn>
             </form>
             <br />
           </div>
@@ -109,5 +116,3 @@ function CreateClaim() {
 }
 
 export default CreateClaim;
-
-

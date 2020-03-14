@@ -44,7 +44,12 @@ function AllClaims() {
           {
             Header: "Notes",
             accessor: "notes"
+          },
+          {
+            Header: "Delete-icon",
+            accessor: "delete"
           }
+
         ]
       }
     ],
