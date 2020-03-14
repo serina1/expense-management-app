@@ -13,7 +13,7 @@ const StyledSideNav = styled.div`
   top: 4em; /* Stay at the top */
   background-color: #2b2b2b;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 30px;
+  padding-top: 40px;
 `;
 
 class SideNav extends React.Component {

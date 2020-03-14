@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Styles = styled.div`
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
 
   .card {
     margin: 10px;
