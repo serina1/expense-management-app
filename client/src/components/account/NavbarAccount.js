@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 const Styles = styled.div`
   .navbar {
+    position: fixed;
+    width: 100%; 
     background-color: #222;
     height: 70px;
     z-index: 1;
