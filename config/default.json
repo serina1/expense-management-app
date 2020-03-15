@@ -1,3 +1,4 @@
 {
+    "mongoURI": "mongodb+srv://jennyunchan:jenn123@cluster0-m92cn.mongodb.net/test?retryWrites=true&w=majority",
     "jwtSecret": "EMA_myJwtSecret"
 }
