@@ -1,21 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const config = require("config");
 const PORT = process.env.PORT || 8080;
 const app = express();
-const databaseUrl = "expensemanagementapp";
 const userRouter = require("./routes/api/user");
-const authRouter = require("./routes/api/auth")
-const expenseRouter = require("./routes/api/expenses")
+const authRouter = require("./routes/api/auth");
+const expenseRouter = require("./routes/api/expenses");
 
+// Bodyparser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/" + databaseUrl,
-  { useNewUrlParser: true }
-);
+//DB Config
+const db = config.get("mongoURI");
 
+// Connect to Mongo
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
+
+// Use routes
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/expenses", expenseRouter);
