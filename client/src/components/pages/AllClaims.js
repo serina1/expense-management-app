@@ -15,6 +15,19 @@ function AllClaims() {
     })
   }, [])
 
+ function handleRemoveExpense(id) {
+    API.removeExpense(id)
+    .then(res => {
+      console.log(res.data);
+      data.filter(e => e._id !==id)
+      
+      // remove the expense locally (with a filter)
+
+      //setData(res.data);
+    });  
+   }
+  
+
 
   const columns = React.useMemo(
     () => [
@@ -24,6 +37,7 @@ function AllClaims() {
           {
             Header: "Title",
             accessor: "title"
+
           },
           {
             Header: "Date",
@@ -47,8 +61,12 @@ function AllClaims() {
           },
           {
             Header: "Delete-icon",
-            accessor: "delete"
-          }
+            Cell: row => (
+              <div>
+                  <button onClick={() => handleRemoveExpense(row.original)}>Delete</button>
+              </div>
+            )
+          } 
 
         ]
       }
@@ -61,7 +79,8 @@ function AllClaims() {
 
 
   return (
-      <Table columns={columns} data={data} />
+    // pass in handleRemove
+      <Table columns={columns} data={data}  />
   );
 }
 
