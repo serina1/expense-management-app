@@ -27,7 +27,7 @@ const Styles = styled.div`
   }
 `;
 
-function Table({ columns, data }) {
+function Table({ columns, data, handleRemoveExpense }) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -63,6 +63,11 @@ function Table({ columns, data }) {
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
+                {/* <td>
+                  <button onClick={() => handleRemoveExpense(row.original)}>
+                    Delete
+                  </button>
+                </td> */}
               </tr>
             );
           })}

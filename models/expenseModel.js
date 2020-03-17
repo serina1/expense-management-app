@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ExpenseSchema = new Schema({
+
   title: {
     type: String
   },
@@ -20,8 +21,14 @@ const ExpenseSchema = new Schema({
   },
   notes: {
     type: String
+  },
+  creator: {
+    type: String
   }
 });
+
+
+
 
 
 const Expense = mongoose.model("Expense", ExpenseSchema);
