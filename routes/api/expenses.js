@@ -1,6 +1,7 @@
 //const expenseController = require("../../controllers/expensesController");
 const router = require("express").Router();
 let Expense = require("../../models/expenseModel")
+let User = require("../../models/userModel");
 
 //router.route("/").get(expenseController.findAll);
 
@@ -33,20 +34,28 @@ router.route("/").get((req, res) => {
     newExpense
       .save()
       .then(() => res.json("Expense added!"))
-      .catch(err => res.status(400).json("Error: " + err));
+      .catch(err => res.status(500).json("Error: " + err));
+
+      // User.findById(req.session._id)
+      //       .then(function(user) {
+      //           // push new post into users.posts array from model setup**:
+      //           user.expenses.push(newExpense);
+      //           user.save();
+      //           return res.json(newExpense);
+      //       })
   });
 
   router.route('/:id').get((req, res) => {
     console.log(req.params)
     Expense.findById(req.params.id)
     .then(expense => res.json(expense))
-    .catch(err => res.status(400).json("Error:" + err))
+    .catch(err => res.status(500).json("Error:" + err))
   });
 
   router.route('/:id').delete ((req, res) => {
     Expense.findByIdAndDelete(req.params.id)
     .then(() => res.json("Expense Deleted"))
-    .catch(err => res.status(400).json("Error:" + err))
+    .catch(err => res.status(500).json("Error:" + err))
   });
   
   router.route('/update/:id').post ((req, res) => {
@@ -63,11 +72,11 @@ router.route("/").get((req, res) => {
 
       expense.save()
      .then(() => res.json("Expense updated")) 
-     .catch(err => res.status(400).json("Error:" + err));
+     .catch(err => res.status(500).json("Error:" + err));
     
     })
     
-    .catch(err => res.status(400).json("Error:" + err));
+    .catch(err => res.status(500).json("Error:" + err));
 
       
   });

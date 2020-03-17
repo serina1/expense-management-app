@@ -15,6 +15,9 @@ export default {
   },
   getExpenses: function() {
     return axios.get("/api/expenses/");
-  }
-};
+  },
+  removeExpense: function(id) {
+    return axios.delete(`/api/expenses/${id}`);
+}
 
+}

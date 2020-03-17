@@ -8,7 +8,7 @@ const auth = require("../../middleware/auth");
 router.route("/").get((req, res) => {
   User.find()
     .then(users => res.json(users))
-    .catch(err => res.status(400).json("Error: " + err));
+    .catch(err => res.status(500).json("Error: " + err));
 });
 
 router.route("/signup").post((req, res) => {
@@ -107,11 +107,11 @@ router.route("/login", auth).post((req, res) => {
   email = email.toLowerCase();
 
   User.findOne({ email }).then(user => {
-    if (!user) return res.status(400).json({ msg: "User does not exist" });
+    if (!user) return res.status(500).json({ msg: "User does not exist" });
 
     // validate password
     bcrypt.compare(password, user.password).then(isMatch => {
-      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+      if (!isMatch) return res.status(500).json({ msg: "Invalid credentials" });
 
       jwt.sign(
         { id: user.id },
