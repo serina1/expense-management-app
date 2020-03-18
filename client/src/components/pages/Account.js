@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import PageCard from "../account/PageCard"
 
-function Account(props) {
-console.log(props)
-
-const [name, setName] = useState();
+function Account() {
 
   return (
     <div>
-      <h1>Hello, {name}</h1>
+      <h1>Hello,</h1>
       <p>
         Welcome to Expense Management App! Please select one of the options below...
       </p>

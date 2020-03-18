@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 import DatePicker from "react-datepicker";
@@ -58,9 +58,9 @@ function CreateClaim() {
   return (
     <div>
       <p />
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
             <h2>Create an expense claim</h2>
             <p />
             <form>

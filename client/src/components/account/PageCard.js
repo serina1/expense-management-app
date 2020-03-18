@@ -47,14 +47,18 @@ function PageCard() {
     <Styles>
       {cards.map(card => {
         return (
-          <Card className="card" style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={card.img} />
-            <Card.Body>
-              <Card.Title>{card.title}</Card.Title>
-              <Card.Text>{card.text}</Card.Text>
-              <Button className="btn btn-secondary" href={card.buttonPath}>{card.buttonText}</Button>
-            </Card.Body>
-          </Card>
+          <div key={card.id}>
+            <Card className="card" style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={card.img} />
+              <Card.Body>
+                <Card.Title>{card.title}</Card.Title>
+                <Card.Text>{card.text}</Card.Text>
+                <Button className="btn btn-secondary" href={card.buttonPath}>
+                  {card.buttonText}
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
         );
       })}
     </Styles>
