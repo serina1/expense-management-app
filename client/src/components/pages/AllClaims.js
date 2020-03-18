@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Table from "../table/Table";
-import ExpenseData from "../expenses/expenses.json";
 import API from "../../utils/API";
 
 function AllClaims() {
@@ -8,19 +7,16 @@ function AllClaims() {
 
   useEffect(() => {
     API.getExpenses().then(res => {
-      console.log(res.data);
       setData(res.data);
     });
   }, []);
 
   function handleRemoveExpense(id, other) {
-    console.log(id);
-    console.log(other.data);
-    setData(other.data.filter(expense => expense._id !== id));
-    API.removeExpense(id);
+    API.removeExpense(id).then(
+      setData(other.data.filter(expense => expense._id !== id))
+    );
   }
   
-  console.log(data);
   const columns = React.useMemo(
     () => [
       {
@@ -54,7 +50,9 @@ function AllClaims() {
             Header: "Delete-icon",
             Cell: ({ row, ...other }) => (
               <div>
-                <button onClick={() => handleRemoveExpense(row.original._id, other)}>
+                <button
+                  onClick={() => handleRemoveExpense(row.original._id, other)}
+                >
                   Delete
                 </button>
               </div>
@@ -66,10 +64,7 @@ function AllClaims() {
     []
   );
 
-  // const data = React.useMemo(() => ExpenseData, []);
-
   return (
-    // pass in handleRemove
     <Table columns={columns} data={data} />
   );
 }
