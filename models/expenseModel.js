@@ -4,20 +4,24 @@ const Schema = mongoose.Schema;
 const ExpenseSchema = new Schema({
 
   title: {
-    type: String
+    type: String,
+    required: true
   },
   date: {
     type: Date, 
-    required: true 
+    required: true
   },
   category: {
-    type: String
+    type: String,
+    required: true
   },
   clienttocharge: {
-    type: String
+    type: String,
+    required: true
   },
   amount: {
-    type: Number
+    type: Number,
+    required: true
   },
   notes: {
     type: String

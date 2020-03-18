@@ -45,9 +45,9 @@ function Signup() {
   return (
     <div>
       <p />
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
             <h2>Sign Up Form</h2>
             <p />
             <form>
