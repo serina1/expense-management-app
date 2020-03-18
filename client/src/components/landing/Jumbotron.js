@@ -34,18 +34,19 @@ function Jumbotron() {
   return (
     <Styles>
       <Jumbo fluid className="jumbo">
-        <div className="overlay"></div>
+        <div className="overlay" />
         <Container>
           <h1>Hello There</h1>
-          <p>
+          <span>
             A free expense management application for smaller businesses and
             start ups.
-          </p>
-          <p>
+          </span>
+          <p />
+          <span>
             <Link to="/signup">
               <SignupButton>Sign Up</SignupButton>
             </Link>
-          </p>
+          </span>
         </Container>
       </Jumbo>
     </Styles>

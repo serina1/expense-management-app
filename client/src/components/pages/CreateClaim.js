@@ -3,6 +3,7 @@ import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "../../index.css";
 
 function CreateClaim() {
   // Setting our component's initial state
@@ -70,17 +71,15 @@ function CreateClaim() {
                 placeholder="Title (required)"
                 value={formObject.title}
               />
-              {/* <Input
-                onChange={handleInputChange}
-                name="date"
-                placeholder="Date (required)"
-                value={formObject.date}
-              /> */}
-              <DatePicker
-                onChange={handleDateChange}
-                selected={formObject.date}
-                placeholder="Date (required)"
-              />
+              <div className="datepicker-wrapper">
+                <DatePicker
+                  className="datepicker"
+                  onChange={handleDateChange}
+                  name="date"
+                  placeholderText="Date (required)"
+                  selected={formObject.date}
+                />
+              </div>
               <Input
                 onChange={handleInputChange}
                 name="category"
