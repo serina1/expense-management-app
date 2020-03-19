@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import LineExample from "../charts/myLineGraph";
+import API from "../../utils/API";
 
 function Charts() {
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    API.getExpenses().then(res => {
+      setData(res.data);
+    });
+  }, []);
+
   return (
     <div>
       <h1>Charts</h1>
-      <p>
-        Are coming soon..
-      </p>
+      <LineExample data = {data}/>
     </div>
   );
 }
