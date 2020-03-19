@@ -56,7 +56,7 @@ function CreateClaim() {
         })
       )
       .then(() => {
-        history.push("/account");
+        history.push("/allclaims");
       })
       .catch(err => console.log(err));
   }

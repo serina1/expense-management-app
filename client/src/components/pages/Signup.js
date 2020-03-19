@@ -17,7 +17,7 @@ function Signup() {
 
   const [formObject, setFormObject] = useState(initialState);
 
-  const { setUserId } = useContext(AuthContext);
+  const {setUserId, setUserName} = useContext(AuthContext)
   let history = useHistory();
 
   // Handles updating component state when the user types into the input field
@@ -38,9 +38,9 @@ function Signup() {
     })
       .then(res => {
         const userId = res.data.user.id;
+        const userName = res.data.user.firstname
         setUserId(userId);
-        console.log(`userid when setting: ${userId}`);
-        console.log(AuthContext);
+        setUserName(userName);
       })
       .then(() =>
         setFormObject({

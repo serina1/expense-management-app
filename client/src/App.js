@@ -17,7 +17,8 @@ import AuthContext from "./components/AuthContext";
 function App() {
   
   const [userId, setUserId] = useState("");
-  const value = {userId, setUserId}
+  const [userName, setUserName] = useState("");
+  const value = {userId, setUserId, userName, setUserName}
 
   return (
     <AuthContext.Provider value={value}>
