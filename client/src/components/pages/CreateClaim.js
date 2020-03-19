@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import AuthContext from "../AuthContext";
+import { useHistory } from "react-router-dom";
 
 function CreateClaim() {
   // Setting our component's initial state
@@ -26,6 +28,9 @@ function CreateClaim() {
     setFormObject({ ...formObject, [name]: value });
   }
 
+  const {userId} = useContext(AuthContext)
+  let history = useHistory();
+
   // When the form is submitted, use the API.saveUser method to save the user data
   // Then redirect the user to the account page
   function handleFormSubmit(event) {
@@ -37,7 +42,8 @@ function CreateClaim() {
       category: formObject.category,
       clienttocharge: formObject.clienttocharge,
       amount: formObject.amount,
-      notes: formObject.notes
+      notes: formObject.notes,
+      creator: userId
     })
       .then(() =>
         setFormObject({
@@ -50,7 +56,7 @@ function CreateClaim() {
         })
       )
       .then(() => {
-        window.location.replace("/allclaims");
+        history.push("/account");
       })
       .catch(err => console.log(err));
   }

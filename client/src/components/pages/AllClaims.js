@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Table from "../table/Table";
 import API from "../../utils/API";
-import { AuthContext } from "../../App";
-
+import AuthContext from "../AuthContext";
 
 function AllClaims() {
-  // const { state: authState } = React.useContext(AuthContext);
   const [data, setData] = useState([]);
+
+  const { userId } = useContext(AuthContext);
+  console.log(AuthContext)
+  console.log(userId);
 
   useEffect(() => {
     API.getExpenses().then(res => {
-      setData(res.data);
+      setData(res.data.filter(expense => expense.creator == userId));
     });
   }, []);
 
@@ -19,7 +21,7 @@ function AllClaims() {
       setData(other.data.filter(expense => expense._id !== id))
     );
   }
-  
+
   const columns = React.useMemo(
     () => [
       {
@@ -67,9 +69,7 @@ function AllClaims() {
     []
   );
 
-  return (
-    <Table columns={columns} data={data} />
-  );
+  return <Table columns={columns} data={data} />;
 }
 
 export default AllClaims;

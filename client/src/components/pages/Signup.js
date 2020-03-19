@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
-import { AuthContext } from "../../App";
+import { useHistory } from "react-router-dom";
 
 function Signup() {
   // Setting our component's initial state
@@ -16,6 +16,8 @@ function Signup() {
   };
 
   const [formObject, setFormObject] = React.useState(initialState);
+
+  let history = useHistory();
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
