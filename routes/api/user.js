@@ -76,7 +76,7 @@ router.route("/signup").post((req, res) => {
               token,
               user: {
                 id: user.id,
-                name: user.name,
+                firstname: user.firstname,
                 email: user.email
               }
             });
@@ -123,7 +123,7 @@ router.route("/login", auth).post((req, res) => {
             token,
             user: {
               id: user.id,
-              name: user.name,
+              firstname: user.firstname,
               email: user.email
             }
           });
