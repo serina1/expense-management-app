@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
+import { AuthContext } from "../../App";
 
 function Signup() {
   // Setting our component's initial state
-  const [formObject, setFormObject] = useState({
+  const initialState = {
     firstname: "",
     lastname: "",
     email: "",
-    password: ""
-  });
+    password: "",
+    isSubmitting: false,
+    errorMessage: null
+  };
+
+  const [formObject, setFormObject] = React.useState(initialState);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -22,24 +27,24 @@ function Signup() {
   // Then redirect the user to the account page
   function handleFormSubmit(event) {
     event.preventDefault();
-      API.signupUser({
-        firstname: formObject.firstname,
-        lastname: formObject.lastname,
-        email: formObject.email,
-        password: formObject.password
-      })
-        .then(() =>
-          setFormObject({
-            firstname: "",
-            lastname: "",
-            email: "",
-            password: ""
-          })
-        )
-        .then(() => {
-          window.location.replace("/account");
+    API.signupUser({
+      firstname: formObject.firstname,
+      lastname: formObject.lastname,
+      email: formObject.email,
+      password: formObject.password
+    })
+      .then(() =>
+        setFormObject({
+          firstname: "",
+          lastname: "",
+          email: "",
+          password: ""
         })
-        .catch(err => console.log(err));
+      )
+      .then(() => {
+        window.location.replace("/account");
+      })
+      .catch(err => console.log(err));
   }
 
   return (
@@ -75,6 +80,11 @@ function Signup() {
                 placeholder="Password (required)"
                 value={formObject.password}
               />
+
+              {formObject.errorMessage && (
+                <span className="form-error">{formObject.errorMessage}</span>
+              )}
+
               <FormBtn
                 disabled={
                   !(
@@ -82,11 +92,11 @@ function Signup() {
                     formObject.lastname &&
                     formObject.email &&
                     formObject.password
-                  )
+                  ) || formObject.isSubmitting
                 }
                 onClick={handleFormSubmit}
               >
-                Submit
+                {formObject.isSubmitting ? "Loading..." : "Submit"}
               </FormBtn>
             </form>
             <br />
@@ -101,4 +111,3 @@ function Signup() {
 }
 
 export default Signup;
-
