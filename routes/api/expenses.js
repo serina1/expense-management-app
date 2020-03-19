@@ -1,9 +1,5 @@
-//const expenseController = require("../../controllers/expensesController");
 const router = require("express").Router();
 let Expense = require("../../models/expenseModel")
-let User = require("../../models/userModel");
-
-//router.route("/").get(expenseController.findAll);
 
 router.route("/").get((req, res) => {
     Expense.find()
@@ -20,7 +16,8 @@ router.route("/").get((req, res) => {
     const category = req.body.category;
     const clienttocharge = req.body.clienttocharge;
     const amount = Number(req.body.amount);
-    const notes = req.body.notes; 
+    const notes = req.body.notes;
+    const creator = req.body.creator;
   
     const newExpense = new Expense({ 
       title,
@@ -28,7 +25,8 @@ router.route("/").get((req, res) => {
       category,
       clienttocharge, 
       amount, 
-      notes
+      notes,
+      creator
     });
   
     newExpense

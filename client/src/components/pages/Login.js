@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext} from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
-import { AuthContext } from "../../App";
+import AuthContext from "../AuthContext";
 
 function Login() {
   const initialState = {
@@ -13,7 +13,11 @@ function Login() {
   };
 
   // Setting our component's initial state
-  const [formObject, setFormObject] = React.useState(initialState);
+  const [formObject, setFormObject] = useState(initialState);
+
+  const {setUserId} = useContext(AuthContext)
+
+  let history = useHistory();
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -30,7 +34,12 @@ function Login() {
         email: formObject.email,
         password: formObject.password
       })
-        .then(res => console.log(res))
+        .then(res => {
+          const userId = res.data.user.id
+          setUserId(userId);
+          console.log(`userid when setting: ${userId}`)
+          console.log(AuthContext)
+        })
         .then(() =>
           setFormObject({
             email: "",
@@ -38,7 +47,7 @@ function Login() {
           })
         )
         .then(() => {
-          window.location.replace("/account");
+          history.push("/account");
         })
         .catch(err => console.log(err));
     }
