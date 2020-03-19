@@ -1,5 +1,5 @@
 import React, { useState, useContext} from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 import AuthContext from "../AuthContext";
@@ -16,7 +16,6 @@ function Login() {
   const [formObject, setFormObject] = useState(initialState);
 
   const {setUserId} = useContext(AuthContext)
-
   let history = useHistory();
 
   // Handles updating component state when the user types into the input field
