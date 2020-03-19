@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Table from "../table/Table";
 import API from "../../utils/API";
+import { AuthContext } from "../../App";
+
 
 function AllClaims() {
+  const { state: authState } = React.useContext(AuthContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {

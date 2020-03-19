@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
+import { AuthContext } from "../../App";
 
 function Login() {
-  // Setting our component's initial state
-  const [formObject, setFormObject] = useState({
+  const initialState = {
     email: "",
-    password: ""
-  });
+    password: "",
+    isSubmitting: false,
+    errorMessage: null
+  };
+
+  // Setting our component's initial state
+  const [formObject, setFormObject] = React.useState(initialState);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -25,7 +30,7 @@ function Login() {
         email: formObject.email,
         password: formObject.password
       })
-      .then((res) => console.log(res))
+        .then(res => console.log(res))
         .then(() =>
           setFormObject({
             email: "",
@@ -60,16 +65,25 @@ function Login() {
                 placeholder="Password (required)"
                 value={formObject.password}
               />
+
+              {formObject.errorMessage && (
+                <span className="form-error">{formObject.errorMessage}</span>
+              )}
+
               <FormBtn
-                disabled={!(formObject.email && formObject.password)}
+                disabled={
+                  !(formObject.email && formObject.password) ||
+                  formObject.isSubmitting
+                }
                 onClick={handleFormSubmit}
               >
-                Submit
+                {formObject.isSubmitting ? "Loading..." : "Submit"}
               </FormBtn>
             </form>
             <br />
             <p>
-              Haven't signed up with us yet? Click <Link to="/signup">here</Link>.
+              Haven't signed up with us yet? Click{" "}
+              <Link to="/signup">here</Link>.
             </p>
           </div>
         </div>

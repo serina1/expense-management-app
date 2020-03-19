@@ -13,15 +13,57 @@ import Sidebar from "./components/account/Sidebar";
 import Layout from "./components/Layout";
 import Jumbotron from "./components/landing/Jumbotron";
 
+export const AuthContext = React.createContext(); // added this
+
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  token: null
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("token", JSON.stringify(action.payload.token));
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        token: action.payload.token
+      };
+    case "LOGOUT":
+      localStorage.clear();
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null
+      };
+    default:
+      return state;
+  }
+};
+
 function App() {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
   return (
     <React.Fragment>
       <Router>
         <Switch>
-          <Route exact path="/" component={LandingContainer} />
-          <Route exact path="/signup" component={SignUpContainer} />
-          <Route exact path="/login" component={SignUpContainer} />
-          <Route component={AccountContainer} />
+          {/* <AuthContext.Provider
+            value={{
+              state,
+              dispatch
+            }}
+          >
+            <div className="App">
+              {!state.isAuthenticated ? <Login /> : <Account />}
+            </div> */}
+            <Route exact path="/" component={LandingContainer} />
+            <Route exact path="/signup" component={SignUpContainer} />
+            <Route exact path="/login" component={SignUpContainer} />
+            <Route component={AccountContainer} />
+          {/* </AuthContext.Provider> */}
         </Switch>
       </Router>
     </React.Fragment>

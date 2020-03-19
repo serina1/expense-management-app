@@ -3,7 +3,6 @@ import { Input, FormBtn } from "../form";
 import API from "../../utils/API";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../index.css";
 
 function CreateClaim() {
   // Setting our component's initial state
@@ -78,6 +77,7 @@ function CreateClaim() {
                   name="date"
                   placeholderText="Date (required)"
                   selected={formObject.date}
+                  autoComplete="off"
                 />
               </div>
               <Input
