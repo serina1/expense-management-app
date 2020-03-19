@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -38,7 +39,7 @@ function PageCard() {
       buttonPath: "/charts"
     },
     {
-      id:4,
+      id: 4,
       img: "assets/img/logout.jpg",
       title: "Log out",
       text: "Finished viewing your expense claims? Return to the homepage.",
@@ -56,7 +57,9 @@ function PageCard() {
             <Card.Body>
               <Card.Title>{card.title}</Card.Title>
               <Card.Text>{card.text}</Card.Text>
-              <Button className="btn btn-secondary" href={card.buttonPath}>{card.buttonText}</Button>
+              <Link to={card.buttonPath}>
+                <Button className="btn btn-secondary">{card.buttonText}</Button>
+              </Link>
             </Card.Body>
           </Card>
         );
