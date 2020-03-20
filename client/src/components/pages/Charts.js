@@ -13,7 +13,7 @@ function Charts() {
 
   return (
     <div>
-      <h1>Charts</h1>
+      <h2>Charts</h2>
       <LineExample data = {data}/>
     </div>
   );

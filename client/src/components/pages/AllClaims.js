@@ -7,8 +7,6 @@ function AllClaims() {
   const [data, setData] = useState([]);
 
   const { userId } = useContext(AuthContext);
-  console.log(AuthContext)
-  console.log(userId);
 
   useEffect(() => {
     API.getExpenses().then(res => {
@@ -18,14 +16,14 @@ function AllClaims() {
 
   function handleRemoveExpense(id, other) {
     API.removeExpense(id).then(
-      setData(other.data.filter(expense => expense._id !== id))
+    setData(other.data.filter(expense => expense._id !== id))
     );
   }
 
   const columns = React.useMemo(
     () => [
       {
-        Header: "All Expense Claims",
+        Header: " ",
         columns: [
           {
             Header: "Title",
@@ -69,7 +67,13 @@ function AllClaims() {
     []
   );
 
-  return <Table columns={columns} data={data} />;
+  return (
+    <div>
+      <h2>All Expense Claims</h2>
+      <p />
+      <Table columns={columns} data={data} />
+    </div>
+  );
 }
 
 export default AllClaims;
