@@ -8,7 +8,7 @@ function Account() {
 
   return (
     <div>
-      <h1>Hello {userName},</h1>
+      <h2>Hello {userName},</h2>
       <p>
         Welcome to Expense Management App! Please select one of the options below...
       </p>

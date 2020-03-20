@@ -5,16 +5,31 @@ import { useTable } from "react-table";
 const Styles = styled.div`
   padding: 1rem;
   table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin: -15px;
     border-spacing: 0;
     border: solid 1px #dddddd;
+    border-collapse: collapse;
+    width: 900px;
     tr {
+      :nth-child(even){background-color: #f2f2f2;}
       :last-child {
         td {
           border-bottom: 0;
         }
       }
+      :hover {
+        background-color: #ddd;
+      }
     }
-    th,
+      border: 1px solid #ddd;
+    }
+    th {
+      padding: 0.1rem 0.5rem 0.5rem 0.5rem;
+      text-align: left;
+      background-color: #9777ad;
+      color: white;
+    }
     td {
       margin: 0;
       padding: 0.5rem;
@@ -24,6 +39,16 @@ const Styles = styled.div`
         border-right: 0;
       }
     }
+  }
+  .--is-filtering {
+    opacity: 0;
+    transition: 10s;
+  }
+  button {
+    border: solid 1px #9777ad;
+    border-radius: 50%;
+    background: none;
+    color: #9777ad;
   }
 `;
 
