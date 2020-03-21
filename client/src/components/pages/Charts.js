@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import LineExample from "../charts/myLineGraph";
+import PieChart from "../charts/PieChart";
+import LineChart from "../charts/LineChart";
 import API from "../../utils/API";
 
 function Charts() {
-  const [data, setData] = useState([]);
-  
+  const [expenses, setExpenses] = useState([]);
+
   useEffect(() => {
     API.getExpenses().then(res => {
-      setData(res.data);
+      setExpenses(res.data);
     });
   }, []);
 
   return (
     <div>
-      <h2>Charts</h2>
-      <LineExample data = {data}/>
+      <h2>Charts Dashboard</h2>
+      <PieChart expenses={expenses} /><LineChart expenses={expenses} />
     </div>
   );
 }

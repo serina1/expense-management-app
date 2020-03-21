@@ -20,6 +20,10 @@ a {
     color: #996ab8;
 }
 
+h2 {
+    color: #3f3f41;
+}
+
 a:hover {
     color: #bbb;
     text-decoration: none;
