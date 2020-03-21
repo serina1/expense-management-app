@@ -33,14 +33,6 @@ router.route("/").get((req, res) => {
       .save()
       .then(() => res.json("Expense added!"))
       .catch(err => res.status(500).json("Error: " + err));
-
-      // User.findById(req.session._id)
-      //       .then(function(user) {
-      //           // push new post into users.posts array from model setup**:
-      //           user.expenses.push(newExpense);
-      //           user.save();
-      //           return res.json(newExpense);
-      //       })
   });
 
   router.route('/:id').get((req, res) => {

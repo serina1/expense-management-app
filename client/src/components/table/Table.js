@@ -6,7 +6,7 @@ const Styles = styled.div`
   padding: 1rem;
   table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    margin: -15px;
+    margin-left: -15px;
     border-spacing: 0;
     border: solid 1px #dddddd;
     border-collapse: collapse;
@@ -20,6 +20,7 @@ const Styles = styled.div`
       }
       :hover {
         background-color: #ddd;
+        transition: 0.5s;
       }
     }
       border: 1px solid #ddd;
@@ -27,7 +28,7 @@ const Styles = styled.div`
     th {
       padding: 0.1rem 0.5rem 0.5rem 0.5rem;
       text-align: left;
-      background-color: #9777ad;
+      background-color: #996ab8;
       color: white;
     }
     td {
@@ -49,6 +50,9 @@ const Styles = styled.div`
     border-radius: 50%;
     background: none;
     color: #9777ad;
+    :hover {
+      background-color: white;
+      transition: 1s;
   }
 `;
 

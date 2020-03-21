@@ -70,7 +70,6 @@ function AllClaims() {
   return (
     <div>
       <h2>All Expense Claims</h2>
-      <p />
       <Table columns={columns} data={data} />
     </div>
   );
